@@ -1,9 +1,9 @@
 node {
     def mvnHome
-    def GIT_REPO = "https://github.com/nirkoren/devopscon.git"
-   
+    def GIT_REPO = "https://github.com/jumehan/devopscon.git"
 
-    stage("Preparation") { 
+
+    stage("Preparation") {
         println "Cloning git repository..."
         git branch: "main", url: GIT_REPO
         mvnHome = tool 'M3'
@@ -17,7 +17,7 @@ node {
         } else {
             bat(buildCMD)
         }
-        
+
     }
     stage('Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
